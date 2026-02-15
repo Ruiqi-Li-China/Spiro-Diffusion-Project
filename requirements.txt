@@ -1,0 +1,18 @@
+# 深度学习框架 (默认安装 CPU/CUDA 兼容版)
+torch
+torchvision
+torchaudio
+
+# 数据处理
+numpy
+pandas
+matplotlib
+scikit-learn
+tqdm
+
+# 医学影像处理 (针对 .dcm 文件)
+pydicom
+
+# Jupyter Notebook 支持
+ipykernel
+notebook
