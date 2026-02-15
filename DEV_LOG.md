@@ -1,10 +1,17 @@
 🫁 项目开发日志 (DEV_LOG)
+
 📝 项目信息
+
 项目名称：Spiro-Diffusion（多模态肺功能曲线重建）
+
 维护者：[Ruiqi-Li-China]
+
 状态：第二阶段（扩散模型训练）已完成
+
 最后更新：2026-02-16
+
 📅 已完成的工作总结
+
 ✅ Phase 1: 数据工程与多模态对齐
 目标：构建一个高质量的数据集，将肺功能曲线与临床特征（如年龄、身高、性别等）关联。
 数据来源：NHANES 2011-2012（Cycle G）
@@ -17,6 +24,7 @@
 成功对齐了 36,873 位 患者数据
 生成了 metadata_aligned.csv（包含年龄、身高、性别等临床特征）
 生成了 signals_L512.npy（标准化的 1D 曲线数据）
+
 ✅ Phase 1.2: 潜在表示学习（VQ-VAE）
 目标：将高维信号压缩为离散的潜在代码（latent codes）
 模型：1D VQ-VAE（编码器 → 量化器 → 解码器）
@@ -26,6 +34,7 @@
 使用脚本：src/train_vqvae.py
 成果：
 模型训练完成并保存为 checkpoints/vqvae_phase1.pth
+
 ✅ Phase 2: 条件潜在扩散模型（cLDM）
 目标：根据患者的生物特征（如年龄、身高、性别）生成肺功能曲线
 潜在表示生成：
@@ -38,14 +47,17 @@
 损失值从 1.07 降低到约 0.15
 成果：
 模型保存为 checkpoints/cldm_phase2.pth
+
 📂 数据集清单
 为确保结果可复现，data 文件夹应包含以下文件：
+
 
 文件名	描述	当前仓库状态
 metadata_aligned.csv	对齐后的临床数据（年龄、身高、性别等）	✅ 已上传
 signals_L512.npy	预处理后的 1D 曲线（长度为 512）	✅ 已上传
 SPX_G.xpt	原始肺功能数据（未压缩）	✅ 已上传
 latents.npy	VQ-VAE 编码后的潜在表示	❌ 过大（本地生成）
+
 🚀 如何继续工作？
 如果丢失了 latents.npy，可以通过以下命令重新生成：
 
@@ -80,6 +92,7 @@ Phase 2：使用 cLDM 模型根据患者特征生成曲线
 latents.npy 文件体积过大，建议在本地生成
 
 &nbsp;  python src/prepare\_latents.py
+
 
 
 
